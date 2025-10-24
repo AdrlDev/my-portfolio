@@ -20,7 +20,7 @@ export default function Navbar() {
                 alt="Logo"
                 className="h-8 w-auto"
               />
-              <span className="text-xl font-bold text-white-800">MyPortfolio</span>
+              <span className="text-xl font-bold text-white-800">aeDev</span>
             </a>
           </div>
 
