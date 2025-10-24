@@ -1,6 +1,11 @@
 'use client'
+import ModalDialog from "@/components/ModalDialog";
+import { useState } from 'react'
 
 export default function Hero() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [title, setTitle] = useState("")
+
   return (
     <div className="bg-gray-900">
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -35,15 +40,23 @@ export default function Hero() {
               fugiat veniam occaecat.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <button
+                onClick={() => 
+                  {
+                    setIsOpen(true)
+                    setTitle("Get Started")
+                  }
+                }
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Get started
-              </a>
-              <a href="#" className="text-sm/6 font-semibold text-white">
+              </button>
+              <button onClick={() => {
+                    setIsOpen(true)
+                    setTitle("Learn more")
+                  }}>
                 Learn more <span aria-hidden="true">→</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -60,6 +73,13 @@ export default function Hero() {
           />
         </div>
       </div>
+
+      <ModalDialog
+        open={isOpen}
+        onClose={setIsOpen}
+        title={title}
+        description="Are you sure you want to delete this item? This action cannot be undone."
+      />
     </div>
   )
 }
