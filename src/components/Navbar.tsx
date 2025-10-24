@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <>
       {/* ✅ Navbar (fixed height only) */}
-      <nav className="bg-white shadow-md relative z-20">
+      <nav aria-label="Global" className="shadow-md relative z-20">
         <div className="mx-auto flex items-center justify-between p-6 lg:px-8">
           {/* Logo */}
           <div className="flex lg:flex-1">
@@ -20,7 +20,7 @@ export default function Navbar() {
                 alt="Logo"
                 className="h-8 w-auto"
               />
-              <span className="text-xl font-bold text-gray-800">MyPortfolio</span>
+              <span className="text-xl font-bold text-white-800">MyPortfolio</span>
             </a>
           </div>
 
@@ -66,16 +66,16 @@ export default function Navbar() {
 
           {/* Desktop Links */}
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link href="/" className="text-sm font-semibold text-gray-800 hover:text-indigo-600">
+            <Link href="/" className="text-sm font-semibold text-white-800 hover:text-indigo-600">
               Home
             </Link>
-            <Link href="/about" className="text-sm font-semibold text-gray-800 hover:text-indigo-600">
+            <Link href="/about" className="text-sm font-semibold text-white-800 hover:text-indigo-600">
               About
             </Link>
-            <Link href="/projects" className="text-sm font-semibold text-gray-800 hover:text-indigo-600">
+            <Link href="/projects" className="text-sm font-semibold text-white-800 hover:text-indigo-600">
               Projects
             </Link>
-            <Link href="/contact" className="text-sm font-semibold text-gray-800 hover:text-indigo-600">
+            <Link href="/contact" className="text-sm font-semibold text-white-800 hover:text-indigo-600">
               Contact
             </Link>
           </div>
