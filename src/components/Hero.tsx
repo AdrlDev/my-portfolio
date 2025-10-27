@@ -6,6 +6,8 @@ import AnimatedText from './AnimatedText'
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false)
   const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [okBtnTitle, setOkBtnTitle] = useState("")
 
   return (
     <div className="bg-gray-900">
@@ -29,7 +31,7 @@ export default function Hero() {
           <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-white">
             Hi, I&apos;m Adriel {' '}
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-gray-300 text-center sm:text-left">
+          <p className="mt-12 text-lg sm:text-xl text-gray-300 text-center sm:text-left">
             I&apos;m an{' '}
             <AnimatedText
               texts={['Android Developer', 'Freelance Programmer']}
@@ -38,11 +40,15 @@ export default function Hero() {
             . I build mobile apps, web tools, and custom software solutions to help businesses and individuals bring their ideas to life.
           </p>
 
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-12 flex items-center justify-center gap-x-6">
             <button
               onClick={() => {
                 setIsOpen(true)
                 setTitle("Hire Me")
+                setDescription(
+                  "Looking to build a custom Android app or web tool for your business? Let's collaborate to turn your ideas into a powerful, user-friendly product that makes an impact."
+                )
+                setOkBtnTitle("Hire me")
               }}
               className="rounded-md bg-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
@@ -53,6 +59,10 @@ export default function Hero() {
               onClick={() => {
                 setIsOpen(true)
                 setTitle("View Portfolio")
+                setDescription(
+                  "Explore some of my latest projects — from Android apps to full-stack web solutions — showcasing my skills in creating efficient, scalable, and visually appealing software."
+                )
+                setOkBtnTitle("View")
               }}
               className="text-sm font-semibold text-gray-300 hover:text-white"
             >
@@ -80,7 +90,8 @@ export default function Hero() {
         open={isOpen}
         onClose={setIsOpen}
         title={title}
-        description="This is a call-to-action. You can replace this text with your own description or link to your projects."
+        description={description}
+        okBtnTitle={okBtnTitle}
       />
     </div>
   )

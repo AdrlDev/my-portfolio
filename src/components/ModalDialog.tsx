@@ -8,13 +8,15 @@ interface ModalDialogProps {
   onClose: (open: boolean) => void
   title?: string
   description?: string
+  okBtnTitle?: string
 }
 
 export default function ModalDialog({
   open,
   onClose,
   title = 'Deactivate account',
-  description = 'Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.'
+  description = 'Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.',
+  okBtnTitle = 'Okay'
 }: ModalDialogProps) {
   return (
     <Dialog open={open} onClose={onClose} className="relative z-10">
@@ -50,7 +52,7 @@ export default function ModalDialog({
                 onClick={() => onClose(false)}
                 className="inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white hover:bg-red-400 sm:ml-3 sm:w-auto"
               >
-                Deactivate
+                {okBtnTitle}
               </button>
               <button
                 type="button"

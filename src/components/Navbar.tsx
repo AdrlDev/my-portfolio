@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -16,6 +17,7 @@ const navigation = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleNavClick = (href: string) => {
     // check if route exists in navigation list
@@ -34,10 +36,12 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">aeDev</span>
-            <img
-              alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-              className="h-8 w-auto"
+            <Image
+              alt="aeDev logo"
+              src="/__aedev_colored.svg"
+              width={102}
+              height={32}
+              priority
             />
           </Link>
         </div>
@@ -51,16 +55,29 @@ export default function Navbar() {
             <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
         </div>
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => handleNavClick(item.href)}
-              className="text-sm font-semibold text-white hover:text-indigo-400 transition"
-            >
-              {item.name}
-            </button>
-          ))}
+          {navigation.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <button
+                key={item.name}
+                onClick={() => handleNavClick(item.href)}
+                className={`group relative text-sm font-semibold transition-colors duration-300 ${
+                  isActive
+                    ? "text-indigo-400"
+                    : "text-white hover:text-indigo-400"
+                }`}
+              >
+                {item.name}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-indigo-500 transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+              </button>
+            );
+          })}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <button
@@ -79,10 +96,12 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">aeDev</span>
-              <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
+              <Image
+                alt="aeDev logo"
+                src="/__aedev_colored.svg"
+                width={102}
+                height={32}
+                priority
               />
             </Link>
             <button
